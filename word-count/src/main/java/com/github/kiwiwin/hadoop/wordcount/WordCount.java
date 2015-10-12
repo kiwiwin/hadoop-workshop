@@ -5,6 +5,8 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
@@ -14,7 +16,7 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class WordCount {
-    public static class Mapper extends org.apache.hadoop.mapreduce.Mapper<LongWritable, Text, Text, LongWritable> {
+    public static class _Mapper extends Mapper<LongWritable, Text, Text, LongWritable> {
         private static final LongWritable countWritable = new LongWritable(1);
         private Text word = new Text();
 
@@ -29,7 +31,7 @@ public class WordCount {
         }
     }
 
-    public static class Reducer extends org.apache.hadoop.mapreduce.Reducer<Text, LongWritable, Text, LongWritable> {
+    public static class _Reducer extends Reducer<Text, LongWritable, Text, LongWritable> {
         @Override
         protected void reduce(Text key, Iterable<LongWritable> values, Context context) throws IOException, InterruptedException {
             long count = 0;
@@ -47,8 +49,8 @@ public class WordCount {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(LongWritable.class);
 
-        job.setMapperClass(Mapper.class);
-        job.setReducerClass(Reducer.class);
+        job.setMapperClass(_Mapper.class);
+        job.setReducerClass(_Reducer.class);
 
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
