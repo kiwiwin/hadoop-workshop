@@ -11,3 +11,4 @@ reports
 generated
 .vagrant/
 dump.rdb
+inputs/

@@ -1,3 +1,4 @@
 rootProject.name = 'hadoop-workshop'
 
 include 'word-count'
+include 'word-length-mean'
