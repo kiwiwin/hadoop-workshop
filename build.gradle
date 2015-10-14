@@ -14,6 +14,7 @@ subprojects {
 
     dependencies {
         compile "org.apache.hadoop:hadoop-common:$hadoopVersion"
+        compile "org.apache.hadoop:hadoop-client:$hadoopVersion"
         compile "org.apache.hadoop:hadoop-mapreduce-client-core:$hadoopVersion"
 
         testCompile "junit:junit:$junitVersion"
